@@ -1,37 +1,49 @@
 <?php
 $status = isset($_GET['status']) ? strtolower((string) $_GET['status']) : 'success';
-$isSuccess = $status === 'success';
-$isExpired = $status === 'expired';
 
-$page = $isSuccess
-    ? [
-        'title' => 'Payment Successful',
-        'icon' => 'bi-check-circle-fill',
-        'accent' => '#479d57',
-        'message' => 'Your transfer has been received and is now being verified.',
-        'subcopy' => 'A confirmation message will appear in your account history shortly.',
-        'button' => 'Back to payment',
-    ]
-    : ($isExpired
-    ? [
-        'title' => 'Payment Session Expired',
-        'icon' => 'bi-clock-history',
-        'accent' => '#f0ad4e',
-        'message' => 'Your payment time window has ended.',
-        'subcopy' => 'Restart payment to generate a fresh session and complete the transfer.',
-        'button' => 'Start new session',
-    ]
-    : [
-        'title' => 'Payment Failed',
-        'icon' => 'bi-x-circle-fill',
-        'accent' => '#d9534f',
-        'message' => 'We could not confirm the transfer from this session.',
-        'subcopy' => 'Check the payment details and try again, or choose another app.',
-        'button' => 'Try again',
-    ]);
+switch ($status) {
+    case 'success':
+        $page = [
+            'title' => 'Payment Successful',
+            'icon' => 'bi-check-circle-fill',
+            'accent' => '#479d57',
+            'message' => 'Your transfer has been received and is now being verified.',
+            'subcopy' => 'A confirmation message will appear in your account history shortly.',
+            'button' => 'Back to payment',
+            'bodyClass' => 'status-success',
+            'status' => 'Verified'
+        ];
+        break;
+    case 'failure':
+        $page  = [
+            'title' => 'Payment Failed',
+            'icon' => 'bi-x-circle-fill',
+            'accent' => '#d9534f',
+            'message' => 'We could not confirm the transfer from this session.',
+            'subcopy' => 'Check the payment details and try again, or choose another app.',
+            'button' => 'Try again',
+            'bodyClass' => 'status-failure',
+            'status' => 'Failed'
+        ];
+        break;
+    case 'expired':
+        $page  = [
+            'title' => 'Payment Expired',
+            'icon' => 'bi-clock-fill',
+            'accent' => '#f0ad4e',
+            'message' => 'The payment window for this session has expired.',
+            'subcopy' => 'Please initiate a new transfer and complete it within the time limit.',
+            'button' => 'Try again',
+            'bodyClass' => 'status-expired',
+            'status' => 'Expired'
+        ];
+        break;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +52,8 @@ $page = $isSuccess
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
-<body class="page-result <?php echo $isSuccess ? 'status-success' : ($isExpired ? 'status-expired' : 'status-failure'); ?>">
+
+<body class="page-result <?php echo $page['bodyClass']; ?>">
     <main class="status-wrap">
         <section class="status-card">
             <div class="status-icon">
@@ -58,7 +71,7 @@ $page = $isSuccess
                     </div>
                     <div class="col-sm-6">
                         <div class="meta-label">Status</div>
-                        <div class="meta-value"><?php echo $isSuccess ? 'Verified' : ($isExpired ? 'Expired' : 'Pending retry'); ?></div>
+                        <div class="meta-value"><?php echo $status; ?></div>
                     </div>
                 </div>
             </div>
@@ -70,4 +83,5 @@ $page = $isSuccess
         </section>
     </main>
 </body>
+
 </html>

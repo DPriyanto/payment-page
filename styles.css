@@ -444,6 +444,15 @@ body {
     background: #d9534f;
 }
 
+.status-expired .status-icon {
+    background: #f0ad4e;
+    box-shadow: 0 18px 40px color-mix(in srgb, #f0ad4e 28%, transparent);
+}
+
+.status-expired .status-action {
+    background: #f0ad4e;
+}
+
 #paymentHeading {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
