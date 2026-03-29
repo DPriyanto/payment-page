@@ -1,5 +1,4 @@
 <?php
-$merchantHost = 'reliablescientists.ac';
 $amount = 600;
 $currency = 'INR';
 ?>

@@ -1,5 +1,4 @@
 <?php
-$merchantHost = 'reliablescientists.ac';
 $upiId = 'r-sajith@ptyes';
 $amount = 600;
 $currency = 'INR';
