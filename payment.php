@@ -57,7 +57,7 @@ if (preg_match('/^(\d{1,2}):(\d{2})$/', $confirmWindow, $matches)) {
             </section>
 
             <section class="payment-card">
-                <div class="detail-rowx d-flex justify-content-between align-items-center gap-3">
+                <div class="d-flex justify-content-between align-items-center gap-3">
                     <div>
                         <div class="detail-label">UPI ID to pay manually</div>
                         <div class="detail-value" id="upiValue"><?php echo htmlspecialchars($upiId, ENT_QUOTES, 'UTF-8'); ?></div>
@@ -92,8 +92,8 @@ if (preg_match('/^(\d{1,2}):(\d{2})$/', $confirmWindow, $matches)) {
 
                 
 
-                <div class="detail-row d-flex justify-content-between align-items-center gap-3">
-                    <div>
+                <div class="row detail-row px-3 d-flex justify-content-between align-items-center gap-3">
+                    <div class="px-2x">
                         <div class="detail-label">Amount</div>
                         <div class="detail-value" id="amountValue"><?php echo number_format($amount); ?> <?php echo htmlspecialchars($currency, ENT_QUOTES, 'UTF-8'); ?></div>
                     </div>
