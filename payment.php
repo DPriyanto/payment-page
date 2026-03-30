@@ -57,19 +57,7 @@ if (preg_match('/^(\d{1,2}):(\d{2})$/', $confirmWindow, $matches)) {
             </section>
 
             <section class="payment-card">
-                <div class="row g-4 align-items-start">
-                    <div class="col-6">
-                        <p class="text-secondary mb-2">Pay to these details only once</p>
-                        <a class="download-link" href="#" download>Download QR</a>
-                    </div>
-                    <div class="col-6">
-                        <div class="" aria-label="UPI QR code">
-                            <img src="img/QR_code_for_mobile_English_Wikipedia.svg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="detail-row d-flex justify-content-between align-items-center gap-3">
+                <div class="detail-rowx d-flex justify-content-between align-items-center gap-3">
                     <div>
                         <div class="detail-label">UPI ID to pay manually</div>
                         <div class="detail-value" id="upiValue"><?php echo htmlspecialchars($upiId, ENT_QUOTES, 'UTF-8'); ?></div>
@@ -89,6 +77,20 @@ if (preg_match('/^(\d{1,2}):(\d{2})$/', $confirmWindow, $matches)) {
                         </div>
                     </div>
                 </div>
+
+                <div class="row detail-row g-4 align-items-start">
+                    <div class="col-6">
+                        <p class="text-secondary mb-2">Pay to these details only once</p>
+                        <a class="download-link" href="#" download>Download QR</a>
+                    </div>
+                    <div class="col-6">
+                        <div class="" aria-label="UPI QR code">
+                            <img src="img/QR_code_for_mobile_English_Wikipedia.svg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                
 
                 <div class="detail-row d-flex justify-content-between align-items-center gap-3">
                     <div>
